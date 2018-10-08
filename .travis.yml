@@ -5,7 +5,11 @@ services:
   - docker
 
 go:
-  - 1.11
+  - "1.11"
+
+before_script:
+  - go version
+  - docker version
 
 script:
   - make test
