@@ -1,17 +1,20 @@
 laguage: go
-go: "1.11"
+go:
+  - "1.10.x"
+  - "master"
+
+dist: trusty
 
 sudo: true
 services:
   - docker
-
 
 before_script:
   - go version
   - docker version
 
 script:
-  - make test
+  - env GO111MODULE=on make test
   - docker build -t byt .
 
 after_script:
