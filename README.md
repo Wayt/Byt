@@ -17,18 +17,10 @@ docker run --name byt --restart=always -p 80:8080 -v /local/data:/data maxwayt/b
 
 ## Development
 
-Configure your env
-
-```
-cp .env.example .env
-vim .env
-```
-
-Make sure your `UPLOAD_DIR` exist and is read/write-able
 
 Install npm dependencies
 
-```
+```bash
 npm install
 ```
 
@@ -39,8 +31,20 @@ npm install -g grunt-cli
 grunt
 ```
 
+Generate static file
+
+```bash
+make generate
+```
+
 Run Golang web server
 
+```bash
+   make run
 ```
-go run app.go
+
+Run tests
+
+```bash
+make test
 ```
