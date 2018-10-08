@@ -1,12 +1,28 @@
 laguage: go
 
-sudo: false
+sudo: true
+services:
+  - docker
 
 go:
   - 1.11
 
 script:
-  make test
+  - make test
+  - docker build -t byt .
+
+after_script:
+  - docker images
+
+before_deploy:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker tag byt $DOCKER_USERNAME/byt:latest
+
+deploy:
+  provider: script
+  script: docker push $DOCKER_USERNAME/byt
+  on:
+    branch: master
 
 notifications:
   email:
