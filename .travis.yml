@@ -1,7 +1,10 @@
 laguage: go
 go:
+  - "1.9"
   - "1.10.x"
-  - "master"
+  - master
+
+go_import_path: github.com/wayt/byt
 
 dist: trusty
 
@@ -12,9 +15,10 @@ services:
 before_script:
   - go version
   - docker version
+  - ls -lha
 
 script:
-  - env GO111MODULE=on make test
+  - go test -v ./...
   - docker build -t byt .
 
 after_script:
