@@ -1,11 +1,10 @@
 laguage: go
+go: "1.11"
 
 sudo: true
 services:
   - docker
 
-go:
-  - "1.11"
 
 before_script:
   - go version
