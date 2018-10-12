@@ -5,6 +5,9 @@ all: generate run
 test:
 	go test -v ./...
 
+dockertest:
+	docker run --rm -v $(shell pwd):/go/src/app -w /go/src/app golang:latest make test
+
 build:
 	go build
 
@@ -15,4 +18,4 @@ generate:
 run:
 	go run main.go http.go static.go
 
-.PHONY: all test build generate run
+.PHONY: all test dockertest build generate run
