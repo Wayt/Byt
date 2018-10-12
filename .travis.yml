@@ -22,8 +22,8 @@ before_deploy:
 deploy:
   provider: script
   script: docker push $DOCKER_USERNAME/byt
-  on:
-    branch: master
+  #  on:
+  #    branch: master
 
 notifications:
   email:
