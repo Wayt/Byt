@@ -1,24 +1,15 @@
-laguage: go
-go:
-  - "1.9"
-  - "1.10.x"
-  - master
-
-go_import_path: github.com/wayt/byt
-
 dist: trusty
 
-sudo: true
+sudo: false
 services:
   - docker
 
 before_script:
-  - go version
   - docker version
   - ls -lha
 
 script:
-  - go test -v ./...
+  - make dockertest
   - docker build -t byt .
 
 after_script:
