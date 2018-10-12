@@ -2,18 +2,10 @@ FROM golang:latest
 
 MAINTAINER max@wayt.me
 
-RUN apt-get update -qq && \
-    apt-get install -qqy npm ruby-sass
-RUN ln -s /usr/bin/nodejs /usr/bin/node
-
-WORKDIR /go/src/github.com/byttl/byt/
+WORKDIR /go/src/github.com/wayt/byt/
 ADD . .
 
-RUN npm install && \
-    npm install -g grunt-cli
-RUN grunt
-
-RUN go build
+RUN go build -o byt
 
 FROM alpine:latest
 COPY --from=0 /go/src/github.com/wayt/byt/byt /byt
