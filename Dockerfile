@@ -7,7 +7,7 @@ ADD . .
 
 RUN go build -o byt
 
-FROM alpine:latest
+FROM golang:latest
 COPY --from=0 /go/src/github.com/wayt/byt/byt /byt
 
 RUN mkdir -p /data
