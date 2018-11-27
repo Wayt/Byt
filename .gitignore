@@ -7,4 +7,5 @@ config.js
 *.min.css.map
 *.min.js
 .sass-cache
-upload/*
+/upload
+/byt
